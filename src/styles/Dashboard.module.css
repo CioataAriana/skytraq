@@ -1,0 +1,275 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  position: relative;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/bg.png');
+  background-size: cover;
+  background-position: center 60%;
+  z-index: 0;
+}
+
+.bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.12);
+  z-index: 1;
+}
+
+.body {
+  flex: 1;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px 60px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.55); 
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-radius: 36px;
+  padding: 45px 50px 50px;
+  width: 100%;
+  max-width: 1150px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  position: relative;
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.title {
+  font-size: 34px;
+  font-weight: 800;
+  color: #1a3a6e;
+  margin: 0;
+}
+
+.btnAdd {
+  background: #6ba4e9;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(107, 164, 233, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btnAdd:hover { 
+  background: #558cd1; 
+  transform: translateY(-2px);
+}
+
+.tableWrap {
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(248, 250, 252, 0.85); 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table thead tr {
+  background: #89b0e2; 
+}
+
+.table th {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 18px 20px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.table td {
+  padding: 16px 20px;
+  text-align: center;
+  color: #1a3a6e; 
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  font-weight: 600;
+}
+
+.table tbody tr:nth-child(even) {
+  background: rgba(137, 176, 226, 0.05); 
+}
+
+.table tbody tr:hover td { 
+  background: rgba(137, 176, 226, 0.12); 
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.iconBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #1a3a6e;
+  opacity: 0.6;
+  padding: 4px;
+  transition: all 0.2s ease;
+}
+
+.iconBtn:hover {
+  opacity: 1;
+  transform: scale(1.25);
+}
+
+.deleteIcon:hover {
+  color: #e74c3c !important;
+}
+
+/* ── Status Badges ── */
+.statusBadge {
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.completed { 
+  background: #e2f3e9; 
+  color: #0e6231; 
+  border: 1px solid #c2e7d1;
+}
+
+.cancelled { 
+  background: #fadbd8; 
+  color: #78281f; 
+  border: 1px solid #f5b7b1;
+}
+
+.scheduled { 
+  background: #e3f2fd; 
+  color: #0d47a1; 
+  border: 1px solid #bbdefb;
+}
+
+/* ── Footer & Paginare ── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+  position: relative;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pageNav {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  color: #1a3a6e;
+  font-size: 18px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.pageNav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pageBtn {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a3a6e;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pageBtnActive {
+  background: #6ba4e9;
+  color: #fff;
+  border-color: #6ba4e9;
+}
+
+.pageBtn:hover:not(.pageBtnActive) {
+  background: rgba(107, 164, 233, 0.1);
+}
+
+/* ── Total HRS ── */
+.totalHrs {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -30px; 
+  background: #89b0e2; 
+  border-radius: 0 0 18px 18px;
+  padding: 8px 36px 12px;
+  box-shadow: 0 10px 25px rgba(107, 164, 233, 0.25);
+  z-index: 5;
+}
+
+.totalHrsContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.totalHrsTime {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+
+.totalHrsLabel {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}

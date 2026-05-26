@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+model User {
+  id       String   @id @default(uuid())
+  email    String   @unique
+  password String
+  fullName String
+  license  String?  // Optional field
+
+  // A User can have many flights in their logbook
+  flights  Flight[]
+}
+
+
+model Airline {
+  id    String @id @default(uuid())
+  code  String @unique
+  name  String
+
+  // An Airline can be associated with many flights
+  flights Flight[]
+}
+
+
+model Flight {
+  id              String   @id @default(uuid())
+  flightNumber    String
+  date            DateTime
+  origin          String
+  destination     String
+  departureTime   String
+  arrivalTime     String
+  role            String
+  status          String
+
+
+  aircraft        String?
+  notes           String?
+  
+  takeoffDayNight String?
+  takeoffFuel     String?
+  takeoffWeight   String?
+  takeoffPerform  String?
+  
+  landingDayNight String?
+  landingFuel     String?
+  landingWeight   String?
+  landingPerform  String?
+
+  // Foreign Keys connecting this flight to 3NF tables
+  userId          String
+  airlineId       String
+
+  // The actual relational connections
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  airline         Airline  @relation(fields: [airlineId], references: [id], onDelete: Restrict)
+}
