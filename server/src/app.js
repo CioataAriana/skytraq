@@ -1,29 +1,22 @@
 import express from 'express';
 import cors from 'cors';
 import routes from './routes.js'; 
-import fs from 'fs';       
-import https from 'https';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
 const app = express();
 
+// Permitem frontend-ului să comunice cu backend-ul
 app.use(cors()); 
 app.use(express.json()); 
+
+// Rutele tale
 app.use('/api', routes);
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// Cloud-ul (Render) va folosi process.env.PORT. Local va folosi 3000.
+const PORT = process.env.PORT || 3000;
 
-const sslOptions = {
-  key: fs.readFileSync(path.join(__dirname, '../server.key')),
-  cert: fs.readFileSync(path.join(__dirname, '../server.crt'))
-};
-
-if (process.env.NODE_ENV !== 'test') {
-  https.createServer(sslOptions, app).listen(3000, '0.0.0.0', () => {
-    console.log('🔒 SECURE API running on https://172.20.10.4:3000');
-  });
-}
+// Ascultăm pe '0.0.0.0' pentru ca Render să poată detecta serverul
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
 
 export default app;
