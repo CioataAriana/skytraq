@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useEffect } from 'react';
 const AuthContext = createContext(null);
 
 // It uses your cloud URL if it exists, otherwise falls back to localhost for local testing.
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://172.20.10.4:3000/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://skytraq.onrender.com/api';
 
 export function AuthProvider({ children }) {
   // 1. Initialize state from localStorage

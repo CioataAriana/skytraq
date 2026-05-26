@@ -1,6 +1,6 @@
 import { useAuth } from '../store/AuthContext'; 
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://172.20.10.4:3000/api'; 
+const API_URL = import.meta.env.VITE_API_URL || 'https://skytraq.onrender.com/api'; 
 
 export function useFlights() {
   const { user } = useAuth(); 

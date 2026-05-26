@@ -7,7 +7,7 @@ export const useAirlines = () => {
   useEffect(() => {
     const fetchAirlines = async () => {
       try {
-        const response = await fetch('https://172.20.10.4:3000/api/airlines');
+        const response = await fetch('https://skytraq.onrender.com/api/airlines');
         if (!response.ok) throw new Error('Network response was not ok');
         const data = await response.json();
         setAirlines(data);
