@@ -17,25 +17,25 @@ export default function Login() {
   const [errors, setErrors] = useState({});
   const [authError, setAuthError] = useState('');
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    setAuthError('');
-    
-    const validationErrs = validateLogin(email, password);
-    if (!isValid(validationErrs)) {
-      setErrors(validationErrs);
-      return;
-    }
-
-    // MUST await the login result
-    const success = await login(email, password); 
-    
-    if (success) {
-      navigate('/dashboard'); 
-    } else {
-      setAuthError('Invalid login credentials. Please try again.');
-    }
+async function handleSubmit(e) {
+  e.preventDefault();
+  setAuthError('');
+  
+  const validationErrs = validateLogin(email, password);
+  if (!isValid(validationErrs)) {
+    setErrors(validationErrs);
+    return;
   }
+
+  // MUST await the login result
+  const success = await login(email, password); 
+  
+  if (success) {
+    navigate('/dashboard'); 
+  } else {
+    setAuthError('Invalid login credentials. Please try again.');
+  }
+}
 
   return (
     <div className={styles.page}>
@@ -55,6 +55,7 @@ export default function Login() {
             <div className={styles.inputGroup}>
               <label htmlFor="email" className={styles.label}>Email:</label>
               <div className={styles.inputWrapper}>
+                <span className={styles.icon}></span>
                 <input
                   id="email" type="email" placeholder="your@email.com"
                   className={`${styles.input} ${errors.email ? styles.inputError : ''}`}
@@ -70,6 +71,7 @@ export default function Login() {
             <div className={styles.inputGroup}>
               <label htmlFor="password" className={styles.label}>Password:</label>
               <div className={styles.inputWrapper}>
+                <span className={styles.icon}></span>
                 <input
                   id="password" type={showPassword ? 'text' : 'password'} placeholder="••••••••••"
                   className={`${styles.input} ${errors.password ? styles.inputError : ''}`}
@@ -78,7 +80,7 @@ export default function Login() {
                   onChange={(e) => { setPassword(e.target.value); setErrors(prev => ({...prev, password: ''})) }}
                 />
                 <button type="button" className={styles.toggleBtn} onClick={() => setShowPassword(!showPassword)}>
-                  {showPassword ? '🙈' : '👁️'}
+                  {showPassword ? '' : ''}
                 </button>
               </div>
               {/* Inline Error Message */}
