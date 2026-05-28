@@ -57,7 +57,7 @@ export default function Register() {
             <div className={styles.inputGroup}>
               <label className={styles.label}>Full Name:</label>
               <div className={styles.inputWrapper}>
-                <span className={styles.icon}>👤</span>
+                <span className={styles.icon}></span>
                 <input
                   name="fullName" type="text" placeholder="Bruce Wayne"
                   className={`${styles.input} ${errors.fullName ? styles.inputError : ''}`}
@@ -85,7 +85,7 @@ export default function Register() {
             <div className={styles.inputGroup}>
               <label className={styles.label}>Password:</label>
               <div className={styles.inputWrapper}>
-                <span className={styles.icon}>🔒</span>
+                <span className={styles.icon}></span>
                 <input
                   name="password" type={showPassword ? 'text' : 'password'} placeholder="••••••••••"
                   className={`${styles.input} ${errors.password ? styles.inputError : ''}`}
@@ -102,7 +102,7 @@ export default function Register() {
             <div className={styles.inputGroup}>
               <label className={styles.label}>Pilot License (Optional):</label>
               <div className={styles.inputWrapper}>
-                <span className={styles.icon}>🪪</span>
+                <span className={styles.icon}></span>
                 <input
                   name="license" type="text" placeholder="RO.FCL.006299"
                   className={`${styles.input} ${errors.license ? styles.inputError : ''}`}

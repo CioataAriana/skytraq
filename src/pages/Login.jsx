@@ -71,7 +71,7 @@ async function handleSubmit(e) {
             <div className={styles.inputGroup}>
               <label htmlFor="password" className={styles.label}>Password:</label>
               <div className={styles.inputWrapper}>
-                <span className={styles.icon}>🔒</span>
+                <span className={styles.icon}></span>
                 <input
                   id="password" type={showPassword ? 'text' : 'password'} placeholder="••••••••••"
                   className={`${styles.input} ${errors.password ? styles.inputError : ''}`}
