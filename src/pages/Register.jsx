@@ -71,7 +71,7 @@ export default function Register() {
             <div className={styles.inputGroup}>
               <label className={styles.label}>Email:</label>
               <div className={styles.inputWrapper}>
-                <span className={styles.icon}>✉️</span>
+                <span className={styles.icon}></span>
                 <input
                   name="email" type="email" placeholder="your@email.com"
                   className={`${styles.input} ${errors.email ? styles.inputError : ''}`}
@@ -93,7 +93,7 @@ export default function Register() {
                   value={values.password} onChange={handleChange}
                 />
                 <button type="button" className={styles.toggleBtn} onClick={() => setShowPassword(!showPassword)}>
-                  {showPassword ? '🙈' : '👁️'}
+                  {showPassword ? '' : ''}
                 </button>
               </div>
               {errors.password && <span style={{color: '#e74c3c', fontSize: '12px', marginTop: '4px', fontWeight: '600'}}>{errors.password}</span>}

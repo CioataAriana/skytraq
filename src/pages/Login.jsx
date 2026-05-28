@@ -55,7 +55,7 @@ async function handleSubmit(e) {
             <div className={styles.inputGroup}>
               <label htmlFor="email" className={styles.label}>Email:</label>
               <div className={styles.inputWrapper}>
-                <span className={styles.icon}>✉️</span>
+                <span className={styles.icon}></span>
                 <input
                   id="email" type="email" placeholder="your@email.com"
                   className={`${styles.input} ${errors.email ? styles.inputError : ''}`}
@@ -80,7 +80,7 @@ async function handleSubmit(e) {
                   onChange={(e) => { setPassword(e.target.value); setErrors(prev => ({...prev, password: ''})) }}
                 />
                 <button type="button" className={styles.toggleBtn} onClick={() => setShowPassword(!showPassword)}>
-                  {showPassword ? '🙈' : '👁️'}
+                  {showPassword ? '' : ''}
                 </button>
               </div>
               {/* Inline Error Message */}
